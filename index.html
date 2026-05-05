@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLITICA | Wall Magazine</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --bg-color: #e7c6ff; /* Main color */
+            --bg-lighter: #f4e3ff; /* Subtle lighter shade for description boxes */
+            --text-main: #1a1a1a;
+            --text-muted: #4a4a4a;
+            --accent: #5e3a8c; 
+            --frame-color: #ffffff;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HOME SECTION (Landing Page) --- */
+        #home {
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-container img {
+            width: 160px; 
+            height: auto; 
+            border-radius: 50%; 
+            margin-bottom: 20px; 
+            display: block; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 9rem;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            transition: transform 0.3s ease; 
+            cursor: default;
+        }
+
+        h1:hover {
+            transform: scale(1.1); 
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- GALLERY SECTION --- */
+        #gallery {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px; /* Removed vertical padding to strictly rely on 100vh */
+        }
+
+        .section-block {
+            min-height: 100vh; /* Forces each section to take the full view height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px;
+            width: 100%;
+        }
+
+        /* Image Card with Seamless Frame & Description */
+        .img-card {
+            background-color: var(--frame-color);
+            padding: 10px; /* White frame thickness */
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            
+            /* Initial state for fade-in/fade-out */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* Staggered transition delays for both appearing and disappearing */
+        .img-card:nth-child(1) { transition-delay: 0s; }
+        .img-card:nth-child(2) { transition-delay: 0.15s; }
+        .img-card:nth-child(3) { transition-delay: 0.3s; }
+
+        /* Revealed state */
+        .section-block.appear .img-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .img-wrapper {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border-radius: 6px 6px 0 0; /* Top rounded, bottom flat to attach to description */
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .img-card:hover .img-wrapper img {
+            transform: scale(1.15);
+        }
+
+        /* Seamless Description Box attached directly to the image */
+        .img-desc {
+            background-color: var(--bg-lighter);
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: 600;
+            border-radius: 0 0 6px 6px; /* Flat top, rounded bottom */
+            margin-top: 0; 
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: rgba(0,0,0,0.03); 
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 3rem; }
+            .section-block { min-height: auto; padding: 60px 0; } /* Fallback for smaller screens */
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: repeat(1, 1fr); }
+            h1 { font-size: 2.2rem; }
+            .img-card { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="home">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <h1>POLITICA</h1>
+        <p class="subtitle">Wall Magazine 2025–26</p>
+        <p class="tagline">Exploring the dynamics of the Voting System in India: Your Voice, Your Power, Your Future.</p>
+    </section>
+
+    <section id="gallery">
+        
+        <div class="section-block" id="g1">
+            <div class="grid">
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=1" alt="Gallery Image"></div>
+                    <div class="img-desc">Electoral Rallies</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=2" alt="Gallery Image"></div>
+                    <div class="img-desc">The Voting Process</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=3" alt="Gallery Image"></div>
+                    <div class="img-desc">Voter Demographics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block" id="g2">
+            <div class="grid">
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=4" alt="Gallery Image"></div>
+                    <div class="img-desc">Electronic Voting Machines</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=5" alt="Gallery Image"></div>
+                    <div class="img-desc">Election Commission</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=6" alt="Gallery Image"></div>
+                    <div class="img-desc">Youth Participation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block" id="g3">
+            <div class="grid">
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=7" alt="Gallery Image"></div>
+                    <div class="img-desc">Campaign Strategies</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=8" alt="Gallery Image"></div>
+                    <div class="img-desc">Rural Voting Trends</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=9" alt="Gallery Image"></div>
+                    <div class="img-desc">Women in Politics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block" id="g4">
+            <div class="grid">
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=10" alt="Gallery Image"></div>
+                    <div class="img-desc">Media and Elections</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=11" alt="Gallery Image"></div>
+                    <div class="img-desc">Counting Day Tension</div>
+                </div>
+                <div class="img-card">
+                    <div class="img-wrapper"><img src="https://picsum.photos/400/500?random=12" alt="Gallery Image"></div>
+                    <div class="img-desc">The Future of Democracy</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Website design created by <strong>Rohan Kumar Goon</strong></p>
+    </footer>
+
+    <script>
+        // --- INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
+        const observerOptions = {
+            threshold: 0.2 // Trigger when 20% of section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Fade in when scrolling into view
+                    entry.target.classList.add('appear');
+                } else {
+                    // Fade out in reverse when scrolling out of view (both up and down)
+                    entry.target.classList.remove('appear');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-block').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

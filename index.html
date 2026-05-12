@@ -237,16 +237,30 @@
             transform: scale(1.03);
         }
 
+        /* === MARQUEE ANIMATION ADDED HERE === */
         .subtitle {
 
             font-size: 1.3rem;
-
             font-weight: 600;
-
             color: var(--accent);
-
             margin-bottom: 18px;
+
+            display: inline-block;
+            white-space: nowrap;
+            
+            /* 15s controls the speed. linear keeps it constant, infinite loops it */
+            animation: marqueeLeftToRight 15s linear infinite; 
         }
+
+        @keyframes marqueeLeftToRight {
+            0% {
+                transform: translateX(-100vw);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+        /* ==================================== */
 
         .tagline {
 
@@ -713,27 +727,23 @@
 
     <footer>
 
-       <footer>
-
-    <p>
-        Website design created by
-        <a 
-            href="https://instagram.com/ug_rohan_1"
-            target="_blank"
-            style="
-                color: #5e3a8c;
-                font-weight: bold;
-                text-decoration: none;
-                transition: 0.3s ease;
-            "
-            onmouseover="this.style.opacity='0.7'"
-            onmouseout="this.style.opacity='1'"
-        >
-            Rohan Kumar Goon
-        </a>
-    </p>
-
-</footer>
+        <p>
+            Website design created by
+            <a 
+                href="https://instagram.com/ug_rohan_1"
+                target="_blank"
+                style="
+                    color: #5e3a8c;
+                    font-weight: bold;
+                    text-decoration: none;
+                    transition: 0.3s ease;
+                "
+                onmouseover="this.style.opacity='0.7'"
+                onmouseout="this.style.opacity='1'"
+            >
+                Rohan Kumar Goon
+            </a>
+        </p>
 
     </footer>
 
